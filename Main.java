@@ -1,5 +1,3 @@
-import jdk.internal.org.objectweb.asm.tree.InsnList;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -22,8 +20,8 @@ public class Main {
             if (divided.length == 3) {
                 plaintiff = new Plaintiff(Integer.parseInt(divided[0]), divided[1], Double.parseDouble(divided[2])); }
             else {
-                final String delsi = line.substring(line.indexOf("\""), line.lastIndexOf("\""));
-                plaintiff = new Plaintiff(Integer.parseInt(divided[0]), delsi, Double.parseDouble(divided[3])); }
+                final String lenght = line.substring(line.indexOf("\""), line.lastIndexOf("\""));
+                plaintiff = new Plaintiff(Integer.parseInt(divided[0]), lenght, Double.parseDouble(divided[3])); }
             list.add(plaintiff);
         }
         for (Plaintiff z : list) {
