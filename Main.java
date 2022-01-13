@@ -1,3 +1,5 @@
+import jdk.internal.org.objectweb.asm.tree.InsnList;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -6,8 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
-        File tabulka = new File("C:\\Škola\\Ukol7\\src\\naklady_zastoupeni.csv");
-        Scanner sc = new Scanner(tabulka);
+        File tabulkazalobcu = new File("C:\\Users\\Lukyn\\Desktop\\Zalobci-main\\tabulkazalobcu.csv");
+        Scanner sc = new Scanner(tabulkazalobcu);
         ArrayList<Plaintiff> list = new ArrayList<>();
         Plaintiff plaintiff = null;
         String name;
@@ -34,15 +36,9 @@ public class Main {
             name = i.getName();
             price = map.get(name) == null ? 0 : map.get(name);
             map.put(name, price + i.getAmount()); }
+        price = Collections.max(map.values());
+        name = Collections.max(map.keySet());
 
-        Map<String, Double> nej = new HashMap<>();
-        Set set = map.entrySet();
-        Iterator i = set.iterator();
-        while(i.hasNext()) {
-            Map.Entry me = (Map.Entry)i.next();
-            nej.put((String) me.getKey(), (Double) me.getValue()); }
-        price = Collections.max(nej.values());
-        name = Collections.max(nej.keySet());
         System.out.println("Nejdrazsi zalobce je " + name + "a jeho castka je " + price);
     }
 }
